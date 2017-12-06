@@ -1,0 +1,41 @@
+# Alias file calledi from /home/nik/.zshrc
+# created 30.10.2017
+
+# Alias for browsing directories
+alias ll='ls -l'
+alias la='ls -la'
+alias l.='ls -d .*'
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....=cd'../../..'
+alias .....=cd'../../../..'
+alias 3.='cd ../../..'
+alias 4.='cd ../../../..'
+alias 5.='cd ../../../../..'
+
+# Confirmation for overwrite
+alias mv='mv -i'
+alias cp='cp -i'
+alias ln='ln -i'
+
+# Shorten words
+alias h='history'
+alias e='exit'
+
+# Network shortcut
+alias ping='ping -c5'
+alias fastping='ping -c 100 -s.2'
+alias pingg='ping google.com'
+
+# Shorten for root
+alias root='root -l'
+
+# Compression tool
+alias tarx='tar xvf'
+
+# Continue Download
+alias wget='wget -c'
+
+# dotfiles
+alias dots='git --git-dir=$HOME/.dots.git/ --work-tree=$HOME'
