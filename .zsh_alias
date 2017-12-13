@@ -37,5 +37,3 @@ alias tarx='tar xvf'
 # Continue Download
 alias wget='wget -c'
 
-# dotfiles
-alias dots='git --git-dir=$HOME/.dots.git/ --work-tree=$HOME'

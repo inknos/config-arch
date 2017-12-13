@@ -96,4 +96,4 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/nik/Documents/root-6.10.08/lib
 
 # Path for alias
 source /home/nik/.zsh_alias
-
+source /home/nik/.alias_for_dots

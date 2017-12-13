@@ -139,13 +139,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (setq-default save-place t)
 (require 'saveplace)
 
-(require 'sublimity)
-(require 'sublimity-scroll)
-;;(require 'sublimity-map) ;; experimental
-;;(require 'sublimity-attractive)
-(sublimity-mode 1)
-(setq sublimity-scroll-weight 20
-      sublimity-scroll-drift-length 0)
 ;;smooth scrolling
 ;;(setq scroll-margin 5
 ;;      scroll-conservatively 9999
