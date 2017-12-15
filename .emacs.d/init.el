@@ -29,6 +29,7 @@
     auctex
     auto-complete
     dtrt-indent
+    elpy
     evil
     fill-column-indicator
     flycheck
