@@ -5,7 +5,7 @@ from i3pystatus.updates import pacman, yaourt
 # status = Status()
 
 status = Status(
-    logfile='/home/nik/.config/i3pystatus_bottom.log',
+    logfile='/home/nik/.config/i3pystatus/log_bottom.log',
     logformat='%(asctime)s %(levelname)s:',
 )
 

@@ -3,7 +3,7 @@ from i3pystatus import Status
 # status = Status()
 
 status = Status(
-    logfile='/home/nik/.config/i3pystatus_top.log',
+    logfile='/home/nik/.config/i3pystatus/log_top.log',
     logformat='%(asctime)s %(levelname)s:',
 )
 
