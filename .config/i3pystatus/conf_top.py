@@ -1,6 +1,11 @@
 from i3pystatus import Status
 
-status = Status()
+# status = Status()
+
+status = Status(
+    logfile='/home/nik/.config/i3pystatus_top.log',
+    logformat='%(asctime)s %(levelname)s:',
+)
 
 # Displays clock like this:
 # Tue 30 Jul 11:59:46 PM KW31
@@ -14,7 +19,13 @@ status.register("load")
 
 # Shows your CPU temperature, if you have a Intel CPU
 status.register("temp",
-    format="{temp:.0f}°C",)
+    format="{Package_id_0}°C {Core_0_bar}{Core_1_bar}{Core_2_bar}{Core_3_bar}",
+    hints={"markup": "pango"},
+    lm_sensors_enabled=True,
+    color = "#1794d1",
+    alert_temp = 80,
+    alert_color = "#900000",
+)
 
 # The battery monitor has many formatting options, see README for details
 
@@ -28,7 +39,14 @@ status.register("battery",
         "DIS":  "Discharging",
         "CHR":  "Charging",
         "FULL": "Bat full",
-    },)
+    },
+    color = "#FFFFFF",
+    charging_color = "#1794D1",
+    critical_color = "#900000",
+    not_present_color = "#222222",
+    full_color = "#FFFFFF",
+    no_text_full=True,
+)
 
 # Shows the address and up/down state of eth0. If it is up the address is shown in
 # green (the default value of color_up) and the CIDR-address is shown
@@ -38,13 +56,23 @@ status.register("battery",
 #
 # Note: the network module requires PyPI package netifaces
 status.register("network",
-    interface="eth0",
-    format_up="{v4cidr}",)
+    interface="enp4s0f1",
+    hints={"markup": "pango"},
+    format_up="<span color=\"#1794d1\">{v4cidr}</span>",
+    start_color = "#999999",
+    end_color  = "#1794d1",
+    color_down = "#999999", 
+)
 
 # Note: requires both netifaces and basiciw (for essid and quality)
 status.register("network",
-    interface="wlan0",
-    format_up="{essid} {quality:03.0f}%",)
+    interface="wlp3s0",
+    hints = {"markup": "pango"},
+    format_up="<span color=\"#1794d1\">{essid} {quality:03.0f}%</span>",
+    start_color = "#999999",
+    end_color   = "#1794d1",
+    color_down  = "#999999",
+)
 
 # Shows pulseaudio default sink volume
 #
@@ -62,5 +90,17 @@ status.register("mpd",
         "play": "▶",
         "stop": "◾",
     },)
+
+status.register("text",
+    text = "HTOP",
+    on_leftclick = "termite -e htop",
+    color = "#1794d1",
+)
+
+status.register("pomodoro",
+    sound='/home/nik/Music/porcupinetree-pianolessos.m4a',
+    hints = {"markup": "pango"},
+    format = "<span color=\"#1794d1\">☯  {current_pomodoro} / {total_pomodoro} {time}</span>",
+)
 
 status.run()
