@@ -83,13 +83,13 @@ status.register("pulseaudio",
 # Shows mpd status
 # Format:
 # Cloud connected▶Reroute to Remain
-status.register("mpd",
-    format="{title}{status}{album}",
-    status={
-        "pause": "▷",
-        "play": "▶",
-        "stop": "◾",
-    },)
+#status.register("mpd",
+#    format="{title}{status}{album}",
+#    status={
+#        "pause": "▷",
+#        "play": "▶",
+#        "stop": "◾",
+#    },)
 
 status.register("text",
     text = "HTOP",
@@ -97,10 +97,23 @@ status.register("text",
     color = "#1794d1",
 )
 
-status.register("pomodoro",
-    sound='/home/nik/Music/porcupinetree-pianolessos.m4a',
-    hints = {"markup": "pango"},
-    format = "<span color=\"#1794d1\">☯  {current_pomodoro} / {total_pomodoro} {time}</span>",
+#status.register("pomodoro",
+#    sound='/home/nik/Music/porcupinetree-pianolessos.m4a',
+#    hints = {"markup": "pango"},
+#    format = "<span color=\"#1794d1\">☯  {current_pomodoro} / {total_pomodoro} {time}</span>",
+#)
+
+# spotify
+status.register("spotify",
+    status={
+        "pause": "▷",
+        "play": "▶",
+        "stop": "◾",
+    },
+    color="#1794D1",
+    format_no_player="No Player",
+    color_no_player="#999999",
+    hide_no_player=False,
 )
 
 status.run()
