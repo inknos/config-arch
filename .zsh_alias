@@ -37,3 +37,6 @@ alias tarx='tar xvf'
 # Continue Download
 alias wget='wget -c'
 
+# Emacs -nw alias
+alias e='emacs'
+alias et='emacs -nw'
