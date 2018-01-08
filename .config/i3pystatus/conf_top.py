@@ -103,17 +103,16 @@ status.register("text",
 #    format = "<span color=\"#1794d1\">☯  {current_pomodoro} / {total_pomodoro} {time}</span>",
 #)
 
-# spotify
-status.register("spotify",
-    status={
-        "pause": "▷",
-        "play": "▶",
-        "stop": "◾",
-    },
+status.register("now_playing",
+    on_leftclick=["player_command", "PlayPause"],
+    on_rightclick=["player_command", "Stop"],
+    on_middleclick=["player_prop", "Shuffle", True],
+    on_upscroll=["player_command", "Seek", -10000000],
+    on_downscroll=["player_command", "Seek", +10000000],
     color="#1794D1",
-    format_no_player="No Player",
     color_no_player="#999999",
-    hide_no_player=False,
+    on_doubleleftclick=["player_command", "Next"],
+    on_doublerightclick=["player_command", "Previous"],
 )
 
 status.run()

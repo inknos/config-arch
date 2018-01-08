@@ -38,13 +38,18 @@
     highlight-parentheses
     magit
     sublimity
-    powerline-evil))
+    powerline-evil
+    py-autopep8))
 
 (mapc #'(lambda (package)
           (unless (package-installed-p package)
             (package-install package)))
       myPackages)
 ;; end of required packages
+
+(elpy-enable)
+
+(xterm-mouse-mode t)
 
 (require 'evil)
 (evil-mode 1)
@@ -69,7 +74,6 @@
 ;; basic config for auto-complete
 (ac-config-default)
 
- 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -77,7 +81,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (fill-column-indicator magit git dtrt-indent flycheck-pos-tip flycheck powerline-evil auctex highlight-parentheses evil))))
+    (python-mode fill-column-indicator magit git dtrt-indent flycheck-pos-tip flycheck powerline-evil auctex highlight-parentheses evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -92,7 +96,6 @@
 (setq evil-insert-state-cursor '("red" bar))
 (setq evil-replace-state-cursor '("red" bar))
 (setq evil-operator-state-cursor '("red" hollow))
-
 
 ;; powerline evil
 (require 'powerline)
@@ -140,27 +143,18 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (setq-default save-place t)
 (require 'saveplace)
 
-;;smooth scrolling
-;;(setq scroll-margin 5
-;;      scroll-conservatively 9999
-;;      scroll-step 1)
-
-;;(setq scroll-margin 1
-;;      scroll-conservatively 0
-;;      scroll-up-aggressively 0.01
-;;      scroll-down-aggressively 0.01)
-;;(setq-default scroll-up-aggressively 0.01
-;;	      scroll-down-aggressively 0.01)
-;;(setq scroll-step           1
-;;      scroll-conservatively 10000)
-;; scroll one line at a time (less "jumpy" than defaults)
-;;(setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
-;;(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
-;;(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse    
-;;(setq scroll-step 1) ;; keyboard scroll one line at a time
-
 ;;enable flycheck and flycheck-pos-tip
 (add-hook 'after-init-hook #'global-flycheck-mode)
+(when (require 'flycheck nil t)
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  (add-hook 'elpy-mode-hook 'flycheck-mode))
+
+;;delete whitespaces on save
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;;autopep configuration
+(require 'py-autopep8)
+(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
 ;;format buffer
 (defun iwb ()
@@ -186,10 +180,10 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 ;;fill column indicator
 (define-globalized-minor-mode
- global-fci-mode fci-mode (lambda () (fci-mode 1)))
+  global-fci-mode fci-mode (lambda () (fci-mode 1)))
 (global-fci-mode t)
 
-(set-frame-font "Inconsolata 13" nil t)
+(set-frame-font "DejaVu Sans Mono 12" nil t)
 
 ;;git
 (require 'git)
