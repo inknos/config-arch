@@ -26,7 +26,7 @@ status.register("temp",
     lm_sensors_enabled=True,
     color = "#1794d1",
     alert_temp = 80,
-    alert_color = "#900000",    
+    alert_color = "#900000",
 )
 
 # The battery monitor has many formatting options, see README for details
@@ -72,24 +72,24 @@ status.register("runwatch",
 # (defaults of format_down and color_down)
 #
 # Note: the network module requires PyPI package netifaces
-status.register("network",
-    interface="enp4s0f1",
-    hints={"markup": "pango"},
-    format_up="<span color=\"#1794d1\">{v4cidr}</span>",
-    start_color = "#999999",
-    end_color  = "#1794d1",
-    color_down = "#999999",
-)
+#status.register("network",
+#    interface="enp4s0f1",
+#    hints={"markup": "pango"},
+#    format_up="<span color=\"#1794d1\">{v4cidr}</span>",
+#    start_color = "#999999",
+#    end_color  = "#1794d1",
+#    color_down = "#999999",
+#)
 
 # Note: requires both netifaces and basiciw (for essid and quality)
-status.register("network",
-    interface="wlp3s0",
-    hints = {"markup": "pango"},
-    format_up="<span color=\"#1794d1\">{essid} {quality:03.0f}%</span>",
-    start_color = "#999999",
-    end_color   = "#1794d1",
-    color_down  = "#999999",
-)
+#status.register("network",
+#    interface="wlp3s0",
+#    hints = {"markup": "pango"},
+#    format_up="<span color=\"#1794d1\">{essid} {quality:03.0f}%</span>",
+#    start_color = "#999999",
+#    end_color   = "#1794d1",
+#    color_down  = "#999999",
+#)
 
 # Shows disk usage of /
 # Format:
