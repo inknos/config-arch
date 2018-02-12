@@ -88,7 +88,11 @@ status.register("network",
 #
 # Note: requires libpulseaudio from PyPI
 status.register("pulseaudio",
-    format="♪ {volume}",)
+    format="♪ {volume:03.0f}% {db}dB {volume_bar}",
+    vertical_bar_width=1,
+    color_muted="#900000",
+    on_leftclick="switch_mute",
+    on_rightclick="pavucontrol",)
 
 # Shows mpd status
 # Format:
@@ -104,6 +108,13 @@ status.register("pulseaudio",
 status.register("text",
     text = "HTOP",
     on_leftclick = "termite -e htop",
+    color = "#1794d1",
+)
+
+status.register("text",
+    text = "Log",
+    on_leftclick = "gksudo logkeys -s -o `~/%Y$m$d.log`",
+    on_rightclick = "gksudo logkeys -k",
     color = "#1794d1",
 )
 

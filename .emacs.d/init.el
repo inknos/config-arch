@@ -81,7 +81,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (python-mode fill-column-indicator magit git dtrt-indent flycheck-pos-tip flycheck powerline-evil auctex highlight-parentheses evil))))
+    (djvu pdf-tools python-mode fill-column-indicator magit git dtrt-indent flycheck-pos-tip flycheck powerline-evil auctex highlight-parentheses evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -187,5 +187,10 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 ;;git
 (require 'git)
+
+;; arduino-mode
+(require 'cl)
+(autoload 'arduino-mode "arduino-mode" "Arduino editing mode." t)
+(add-to-list 'auto-mode-alist '("\.ino$" . arduino-mode))
 
                                         ;(provide 'init)\n;;; init.el ends here
