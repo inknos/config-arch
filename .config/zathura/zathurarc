@@ -6,8 +6,8 @@
 #set incremental-search true
 
 # zoom
-#map <C-i> zoom in
-#map <C-o> zoom out
+map <C-i> zoom in
+map <C-o> zoom out
 
 #copy to clipboard
 set selection-clipboard clipboard
