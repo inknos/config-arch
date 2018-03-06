@@ -39,7 +39,8 @@
     magit
     sublimity
     powerline-evil
-    py-autopep8))
+    py-autopep8
+    ))
 
 (mapc #'(lambda (package)
           (unless (package-installed-p package)
