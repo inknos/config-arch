@@ -82,7 +82,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (djvu pdf-tools python-mode fill-column-indicator magit git dtrt-indent flycheck-pos-tip flycheck powerline-evil auctex highlight-parentheses evil))))
+    (web-mode djvu pdf-tools python-mode fill-column-indicator magit git dtrt-indent flycheck-pos-tip flycheck powerline-evil auctex highlight-parentheses evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

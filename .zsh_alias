@@ -41,6 +41,9 @@ alias wget='wget -c'
 alias e='emacs'
 alias et='emacs -nw'
 
+# Jupyter
+alias jn='termite -e "jupyter notebook" & ; disown'
+
 # if user is not root, pass all commands via sudo #
 if [ $UID -ne 0 ]; then
     alias reboot='sudo reboot'
