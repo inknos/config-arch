@@ -113,7 +113,7 @@ status.register("text",
 
 status.register("text",
     text = "Log",
-    on_leftclick = "gksudo logkeys -s -o `~/%Y$m$d.log`",
+    on_leftclick = "gksudo logkeys -s -o ~/%Y$m$d.log",
     on_rightclick = "gksudo logkeys -k",
     color = "#1794d1",
 )

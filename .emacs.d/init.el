@@ -194,4 +194,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (autoload 'arduino-mode "arduino-mode" "Arduino editing mode." t)
 (add-to-list 'auto-mode-alist '("\.ino$" . arduino-mode))
 
+(load-library "lilypond-init.el")
+
                                         ;(provide 'init)\n;;; init.el ends here
