@@ -196,4 +196,11 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 (load-library "lilypond-init.el")
 
+(defun my-LaTeX-mode()
+  (add-to-list 'TeX-view-program-list '("Zathura" "zathura --page=%(outpage) %o"))
+  (setq TeX-view-program-selection '((output-pdf "Zathura")))
+  ; Other mode specific config
+  )
+(add-hook 'LaTeX-mode-hook 'my-LaTeX-mode)
+
                                         ;(provide 'init)\n;;; init.el ends here
