@@ -12,7 +12,7 @@ status = Status(
 #                          ^-- calendar week
 status.register("clock",
     format="%a %-d %b %T KW%V",
-    on_leftclick="termite -e calcurse",)
+    on_leftclick="xfce4-terminal -e calcurse",)
 
 # Shows the average load of the last minute and the last 5 minutes
 # (the default value for format is used)
@@ -107,7 +107,7 @@ status.register("pulseaudio",
 
 status.register("text",
     text = "HTOP",
-    on_leftclick = "termite -e htop",
+    on_leftclick = "xfce4-terminal -e htop",
     color = "#1794d1",
 )
 

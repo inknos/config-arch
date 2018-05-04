@@ -35,7 +35,7 @@ font pango:DejaVu Sans Mono 9
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec xfce4-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -101,6 +101,10 @@ bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
+
+# take a screenshot
+#bindym $mod+Shift+Control+s exec `scrot ~/Pictures/%Y-%m-%d-%T-screenshot.png`
+
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -302,4 +306,4 @@ client.background       #333333
 
 exec --no-startup-id nm-applet
 
-exec --no-startup-id blueman-applet
+exec  blueberry-tray
