@@ -203,4 +203,42 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   )
 (add-hook 'LaTeX-mode-hook 'my-LaTeX-mode)
 
-                                        ;(provide 'init)\n;;; init.el ends here
+;(defun my-latex (action)
+;  (interactive)
+;  (if (buffer-modified-p) (save-buffer))
+;  (let ((f1 (current-frame-configuration))
+;        (retcode (shell-command (concat "~/.emacs.d/my-latex " action " " buffer-file-name))))
+;    (if (= retcode 0) (set-frame-configuration f1))))
+
+;(add-hook 'Tex-mode-hook (lambda ()
+;      (define-key TeX-mode-map (kbd "<f12>") '(lambda () (interactive) (my-latex "preview")))
+;      (define-key TeX-mode-map (kbd "<S-f12>") '(lambda () (interactive) (my-latex "create")))))
+
+(eval-after-load "tex"
+  '(progn
+     (add-to-list 'TeX-expand-list
+                  '("%(RubberPDF)"
+                    (lambda ()
+                      (if
+                          (not TeX-PDF-mode)
+                          ""
+                        "--pdf"))))
+     (add-to-list 'TeX-command-list
+		  '("Rubber" "rubber %(RubberPDF) %t" TeX-run-shell nil t) t)))
+
+(add-hook 'TeX-mode-hook
+          '(lambda ()
+            (define-key TeX-mode-map (kbd "<f9>")
+              (lambda ()
+                (interactive)
+                (save-buffer)
+                (TeX-command-menu "Rubber")
+                (TeX-clean)))
+            (define-key TeX-mode-map (kbd "<f12>")
+              (lambda ()
+                (interactive)
+                (TeX-view)
+                [return]))))
+
+
+					;(provide 'init)\n;;; init.el ends here

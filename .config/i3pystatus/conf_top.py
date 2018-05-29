@@ -1,4 +1,5 @@
-from i3pystatus import Status
+import os, subprocess
+from i3pystatus import Status, get_module
 
 # status = Status()
 
@@ -111,10 +112,26 @@ status.register("text",
     color = "#1794d1",
 )
 
+@get_module
+def change_text_log(self, text=""):
+    ison = False
+    if "logkeys --start" in str(subprocess.check_output(['ps', '-ef'])):
+        ison = True
+    else:
+        ison = False
+    if text == "on":
+        self.output["full_text"] = "| ● |"
+        if ison == False:
+            os.system('llk')
+    if text == "off":
+        self.output["full_text"] = "| ○ |"
+        if ison == True:
+            os.system('llkk')
+
 status.register("text",
-    text = "Log",
-    on_leftclick = "gksudo logkeys -s -o ~/%Y$m$d.log",
-    on_rightclick = "gksudo logkeys -k",
+    text = "| ○ |",
+    on_leftclick = [change_text_log, "on"],
+    on_rightclick = [change_text_log, "off"],
     color = "#1794d1",
 )
 
